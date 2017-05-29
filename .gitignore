@@ -1,0 +1,8 @@
+i_m/__pycache__/*
+i_m/migrations/*
+*.pyc
+*.swp
+*.swo
+.idea
+.DS_Store
+media/*
