@@ -1,0 +1,45 @@
+{% extends 'article/base.html'%}
+
+{% block head %}
+<title>MtKt's Blog-Category</title>
+{% endblock %}
+
+{% block cyuuni %}
+<a href="{{ cyuuni_byou.get_absolute_url }}"><p>{{cyuuni_byou.body}}<br/></p><div id=cyuuni_banner><h5> - {{cyuuni_byou.by}}</h5></div></a>
+{% endblock %}
+
+{% block content %}
+
+<div id="about" class="about">
+  <div class="container">
+    <div class="about-top">
+     <h3>Category</h3>   
+         <div class="clearfix"></div>
+    </div>
+  </div>
+</div>
+
+<div id="timeline">
+<div class="container">
+      <div id='year'>
+      {{category.name}} 
+      </div id='year'>
+      </br></br>
+            {% for article in category.article %}
+            <h1>
+            <div id='time'>
+              <time datetime="{{ article.pub_date }}">
+              <span class="month">{{ article.pub_date|date:"M"|upper }}</span>
+              <span class="day">{{ article.pub_date.day }}</span>
+              </time>       
+              <a href="{{ article.get_absolute_url }}">{{ article.title }}</a>
+            </h1>
+          {% endfor %} 
+          </br>
+          <i class="strp"></i>
+          </br>
+    </article>
+    </div>
+</div>
+<!---->
+{% endblock %}

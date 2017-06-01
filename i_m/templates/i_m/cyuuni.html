@@ -1,0 +1,21 @@
+{%  extends 'article/base.html' %}
+
+{% block head %}
+<title>MtKt's Blog-Cyuuni</title>
+{% endblock %}
+
+{% block cyuuni %}
+<h2>🍄</h2>
+{% endblock %}
+
+{% block content %}
+<div class=container>
+<div id=cyuuni_detail>
+<br/><br/>
+<h1>{{cyuuni_byou.body}}</h1> <h2> - {{cyuuni_byou.by}}</h2>
+<br/>
+<p>{{cyuuni_byou.defi}}</p>
+</div>
+</div>
+
+{% endblock %}

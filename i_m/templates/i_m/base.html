@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+<head>
+{% block head %}
+{% endblock %}
+<link href="https://fonts.googleapis.com/css?family=Fugaz+One" rel="stylesheet">
+<link href="{% static 'article/css/bootstrap.css' %}" rel='stylesheet' type='text/css' />
+<link rel="apple-touch-icon" sizes="57x57" href="../../static/article/images/Logo_a.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../../static/article/images/Logo_a.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../../static/article/images/Logo_a.png">   
+<link rel="apple-touch-icon" sizes="144x144" href="../../static/article/images/Logo_a.png">
+<link rel="apple-touch-icon" sizes="60x60" href="../../static/article/images/Logo_a.png">
+<link rel="apple-touch-icon" sizes="120x120" href="../../static/article/images/Logo_a.png">
+<link rel="apple-touch-icon" sizes="76x76" href="../../static/article/images/Logo_a.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../../static/article/images/Logo_a.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../static/article/images/Logo_a.png">
+<!-- jQuery (necessary JavaScript plugins) -->
+<script src='../../static/article/js/jquery-1.8.3.min.js'></script>
+<script type="text/javascript" src="../../static/article/js/bootstrap-3.1.1.min.js"></script>
+<!-- Custom Theme files -->
+<link href="{% static 'article/css/style.css' %}" rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="{% static 'article/css/lightbox.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'article/css/md5.css' %}"/>
+<!-- Custom Theme files -->
+<!--//theme style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+</head>
+<body>
+<!-- header -->
+<div id="home" class="banner">
+	  <div class="banner-info">
+	  <h2>MtKt's Blog</h2><br/>
+     </div>
+	 <div class="side-menu">
+		 <div class="logo">
+			 <h1><a href="/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></h1>
+		 </div>
+		 <div class="top-menu">
+			<span class="menu"><img src="../../static/article/images/menu.png" alt=""></span>
+			 <ul class="nav1">
+				 <li><a class="scroll" href="/">首页</a></li>
+				 <li><a class="scroll" href="/about">About</a></li>
+				 <li><a class="scroll" href="/category/2">碎碎念</a></li>
+				 <li><a class="scroll" href="/timeline">时间线</a></li>
+				 <li><a class="scroll" href="/cyuuni/rand">中二病</a></li>
+			 </ul>
+			 <!-- script-for-menu -->
+							 <script>
+							   $( "span.menu" ).click(function() {
+								 $( "ul.nav1" ).slideToggle( 300, function() {
+								 // Animation complete.
+								  });
+								 });
+							</script>
+		    <!-- /script-for-menu -->
+		 </div>
+	 </div>
+	 <div class="container">
+		 <div class="copy-rights">
+				<ul>
+					<li><a href="http://space.bilibili.com/2025978/"><span class="fa"> </span></a></li>
+					<li><a href="http://www.acfun.cn/u/916384.aspx#page=1"><span class="tw"> </span></a></li>
+					<li><a href="https://github.com/MtKt"><span class="g"> </span></a></li>
+					<li><a href="http://music.163.com/#/user/home?id=258549488"><span class="in"> </span></a></li>
+					<li><a href="mailto:i@metakata.one"><span class="pin"></span></a></li>
+				</ul>
+				<div class="clearfix"></div>
+		 </div>
+	 </div>
+</div>
+
+{% block content %}
+{% endblock %}
+
+</div>
+</div>
+
+<div class="footer">
+		 <div class="copywrite">
+		   <p>Copyright &copy; 2017. MtKt. Some Rights Reserved.</p>
+		 </div>		 
+	 </div>
+</div>
+
+<script type="text/javascript" src="../../static/article/js/move-top.js"></script>
+<script type="text/javascript" src="../../static/article/js/easing.js"></script>
+	</script>
+<!---->
+<!--script-->
+<script type="text/javascript">
+		$(document).ready(function() {
+				/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+				*/
+		$().UItoTop({ easingType: 'easeOutQuart' });
+});
+</script>
+<a href="#to-top" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+
+</body>
+</html>

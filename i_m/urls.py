@@ -4,8 +4,8 @@ from . import views
 app_name = 'i_m'
 urlpatterns = [
                 url(r'^$', views.IndexView.as_view(), name = 'index'),
-                url(r'^bill/(?P<category_id>\w+)$', views.AboutView.as_view(), name = 'bill' ),
-                url(r'^bills/$', views.TimeLine.as_view(), name = 'bills'),
-                url(r'companies/$', views.CategoryView.as_view(),name = 'company'),
-                url(r'^company/(?P<company_id>\w+)/$', views.cyuuni_detail, name ='companies'),
+                url(r'^bill/(?P<bill_id>\w+)$', views.BillView.as_view(), name = 'bill' ),
+                url(r'^bills/$', views.Bills_all_View.as_view(), name = 'bills'),
+                url(r'companies/$', views.CompaniesView.as_view(),name = 'companies'),
+                url(r'^company/(?P<company_id>\w+)/$', views.CompanyView.as_view(), name ='company'),
               ]
