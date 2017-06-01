@@ -1,0 +1,37 @@
+{% extends 'i_m/base.html'%}
+
+{% block head %}
+<title>一个简单的销售系统-Company</title>
+<style>
+form {text-align:center;}
+table {text-align:center;}
+</style>
+{% endblock %}
+
+{%  block content %}
+
+<div id="about" class="about">
+   <div class="container">
+     <div class="about-top">
+     <h3>Company</h3>   
+         <div class="clearfix"></div>
+       </div>
+     </div>
+   </div>
+</div>
+
+<div class="container">
+      <article>
+        <header>
+          <h5 class="title-link">
+            <div style="color: #D0104C;">
+            <a href="{{bill.get_absolute_url }}"><b>#CSTMR{{company.id}}</b></a>
+          </h5>
+          <p>名称：{{company.name}}</a>,&emsp;负责人：{{company.contact}}，&emsp;地区：{{company.area}},&emsp;联系方式：{{company.tel}},&emsp;录入时间：{{company.create_time}},&emsp;客户联系方式：{{company.tel}}
+        <i class="strp"></i>
+        <br><br>
+      </article>
+</div>
+<!---->
+{%  endblock %}
+

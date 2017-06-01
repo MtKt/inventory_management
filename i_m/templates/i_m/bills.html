@@ -1,0 +1,94 @@
+{% extends 'i_m/base.html'%}
+
+{% block head %}
+<title>一个简单的销售系统-Bills</title>
+<style>
+form {text-align:center;}
+table {text-align:center;}
+</style>
+{% endblock %}
+
+{%  block content %}
+
+<div id="about" class="about">
+   <div class="container">
+     <div class="about-top">
+     <h3>Bills</h3>   
+         <div class="clearfix"></div>
+       </div>
+     </div>
+   </div>
+</div>
+
+<div class="container">
+
+<div id=form1>
+<form action="/bills" method="get" >
+    <table>
+        <tr>
+            <td><label for="txtname">起始时间 年：</label></td>
+            <td><input type="text" id="query" name="year_from" /></td>
+            <td><label for="txtname">月：</label></td>
+            <td><input type="text" id="query" name="month_from" /></td>
+            <td><label for="txtname">日：</label></td>
+            <td><input type="text" id="query" name="day_from" /></td>
+        </tr>
+        <tr>
+            <td><label for="txtname">终止时间 年：</label></td>
+            <td><input type="text" id="query" name="year_to" /></td>
+            <td><label for="txtname">月：</label></td>
+            <td><input type="text" id="query" name="month_to" /></td>
+            <td><label for="txtname">日：</label></td>
+            <td><input type="text" id="query" name="day_to" /></td>
+        </tr>
+        <tr>
+            <td colspan=2>
+                <input type="reset" />
+                <input type="submit" value="提交"/>
+            </td>
+        </tr>
+    </table>
+</form> 
+</div>
+<br><br>
+
+{% for bill in bills_list %}
+    {% autoescape off %}
+      <article>
+        <header>
+          <h5 class="title-link">
+            <div style="color: #D0104C;">
+            <a href="{{bill.get_absolute_url }}"><b>#BILL{{bill.create_time|date:"Ymd" }}{{bill.id}}</b></a>
+          </h5>
+          <p>销售人员：{{bill.sales_name}},&emsp;交货时间：{{bill.deliver_time}}，&emsp;产品名：{{bill.product_name}},&emsp;数量：{{bill.quantity}},&emsp;客户名：<a href="{{bill.company_name.get_absolute_url }}">{{bill.company_name.name}}</a>,&emsp;客户联系方式：{{bill.company_name.tel}}
+          <i class="strp"></i>
+          </p>        
+        <br>
+      </article>
+    {% endautoescape %}
+{% endfor %} 
+
+<!---->
+<ul class="pager">
+    {% if  page_obj.has_previous %}
+        <li class="previous">
+            <a href="?page={{page_obj.previous_page_number}}">&larr; Prev</a>
+        </li>
+    {% else %}
+        <li class="previous disabled">
+        </li>
+    {% endif %}
+
+    {% if  page_obj.has_next%}
+        <li class="next">
+            <a href="?page={{page_obj.next_page_number}}">Next &rarr;</a>
+        </li>
+    {% else %}
+        <li class="next disabled">
+        </li>
+    {% endif %}
+</ul>
+</div>
+<!---->
+{%  endblock %}
+

@@ -1,5 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.core.urlresolvers import reverse
 
 # Create your models here.
 
@@ -10,10 +13,14 @@ class Staff(models.Model):
     position = models.CharField('职位',max_length = 40)
     tel = models.CharField('联系方式',max_length = 40)
     create_time = models.DateTimeField('入职时间', auto_now_add=True)
-    staff_id = models.CharField('员工ID',max_length = 40,unique=True)
+    #staff_id = models.CharField('员工ID',max_length = 40,unique=True)
+
+    '''def save(self, *args, **kwargs):
+        self.staff_id = 'STF'+self.pk
+        super().save(*args, **kwargs)'''
 
     def __str__(self):
-        return self.staff_id
+        return self.name
 
 class Company(models.Model):
     name = models.CharField('名称',max_length = 40)
@@ -21,12 +28,22 @@ class Company(models.Model):
     area = models.CharField('地区',max_length = 40)
     tel = models.CharField('联系方式',max_length = 40)
     create_time = models.DateTimeField('录入时间', auto_now_add=True)
+    #company_id = models.CharField('公司ID',max_length = 40,blank = True)
+
+    '''def save(self, *args, **kwargs):
+        self.company_id = 'CSTMR'+self.create_time
+        super().save(*args, **kwargs)'''
 
     def get_absolute_url(self):
-        return reverse('i_m:company', kwargs={'bill_id': self.id})
+        return reverse('i_m:company', kwargs={'company_id': self.id})
 
     def __str__(self):
         return self.name
+
+'''@receiver(post_save, sender = Company)
+def update_company_id(sender, **kwargs):
+    Company.company_id = 'CSTMR'+str(Company.id)
+    Company.save()'''
 
 class Bill(models.Model):
 
@@ -42,10 +59,14 @@ class Bill(models.Model):
     bill_status = models.IntegerField('单证状态', default=0, choices=STATUS.items())
     product_name = models.CharField('名称', max_length = 40)
     quantity = models.IntegerField('数量')
-    bill_id = models.CharField('账单ID',max_length = 40,unique=True)
+    #bill_id = models.CharField('账单ID',max_length = 40,unique=True)
+
+    '''def save(self, *args, **kwargs):
+        self.company_id = 'BILL'+str(self.create_time)+str(self.pk)
+        super().save(*args, **kwargs)'''
 
     def get_absolute_url(self):
         return reverse('i_m:bill', kwargs={'bill_id': self.id})
 
     def __str__(self):
-        return self.bill_id
+        return self.company_name.name
