@@ -27,13 +27,15 @@ table {text-align:center;}
         <header>
           <h5 class="title-link">
             <div style="color: #D0104C;">
-            <a href="{{bill.get_absolute_url }}"><b>#DSPTCH{{dispatch.create_time|date:"Ymd" }}{{dispatch.id}}</b></a>
+            <a href="{{dispatch.get_absolute_url }}"><b>#DSPTCH{{dispatch.create_time|date:"Ymd" }}{{dispatch.id}}</b></a>
+            &emsp;
+            <a href="{{dispatch.bill.get_absolute_url }}"><b>#BILL{{dispatch.bill.create_time|date:"Ymd" }}{{dispatch.bill.id}}</b></a>
           </h5>
-          <p>销售人员：{{dispatch.sales_name}},&emsp;交货时间：{{dispatch.deliver_time}}，&emsp;产品名：{{dispatch.product_name}},&emsp;数量：{{bill.quantity}},&emsp;客户名：<a href="{{bill.company_name.get_absolute_url }}">{{bill.company_name.name}}</a>,&emsp;客户联系方式：{{bill.company_name.tel}}</p>
-        <i class="strp"></i>
-        <br><br>
+          <p>销售人员：{{dispatch.sales_name}} ,&emsp;发货时间：{{dispatch.dispatch_time}} ,&emsp;交货时间：{{dispatch.bill.deliver_time}} ,&emsp;产品名：{{dispatch.product_name}} ,&emsp;发货数量：{{dispatch.quantity}} ,&emsp;订货数量：{{dispatch.bill.quantity}} ,&emsp;客户名：<a href="{{bill.company_name.get_absolute_url }}">{{dispatch.company_name.name}}</a> ,&emsp;客户联系方式：{{dispatch.company_name.tel}}
+          <i class="strp"></i>
+          </p>        
+        <br>
       </article>
-</div>
 <!---->
 {%  endblock %}
 

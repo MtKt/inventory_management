@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import User
-from i_m.models import Staff,Company,Bill
+from i_m.models import Staff,Company,Bill,Dispatch
 from django import forms
 
 class StaffInline(admin.StackedInline):
@@ -30,4 +30,4 @@ admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
 admin.site.register(Bill,BillAdmin)
 admin.site.register(Company,CompanyAdmin)
-
+admin.site.register(Dispatch)
