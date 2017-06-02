@@ -12,14 +12,12 @@ class StaffInline(admin.StackedInline):
 class UserAdmin(BaseUserAdmin):
     inlines = (StaffInline,)
 
-
 class CompanyAdminForm(forms.ModelForm):
     class Meta:
         model = Company
         exclude = ('company_id',)
 class CompanyAdmin(admin.ModelAdmin):
     form = CompanyAdminForm
-
 
 class BillAdminForm(forms.ModelForm):
     class Meta:

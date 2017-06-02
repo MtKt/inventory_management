@@ -1,0 +1,39 @@
+{% extends 'i_m/base.html'%}
+
+{% block head %}
+<title>一个简单的销售系统-Dispatch</title>
+<style>
+form {text-align:center;}
+table {text-align:center;}
+</style>
+{% endblock %}
+
+{%  block content %}
+
+
+<div id="about" class="about">
+   <div class="container">
+     <div class="about-top">
+     <h3>Dispatch</h3>   
+         <div class="clearfix"></div>
+       </div>
+     </div>
+   </div>
+</div>
+
+<div class="container">
+
+      <article>
+        <header>
+          <h5 class="title-link">
+            <div style="color: #D0104C;">
+            <a href="{{bill.get_absolute_url }}"><b>#DSPTCH{{dispatch.create_time|date:"Ymd" }}{{dispatch.id}}</b></a>
+          </h5>
+          <p>销售人员：{{dispatch.sales_name}},&emsp;交货时间：{{dispatch.deliver_time}}，&emsp;产品名：{{dispatch.product_name}},&emsp;数量：{{bill.quantity}},&emsp;客户名：<a href="{{bill.company_name.get_absolute_url }}">{{bill.company_name.name}}</a>,&emsp;客户联系方式：{{bill.company_name.tel}}</p>
+        <i class="strp"></i>
+        <br><br>
+      </article>
+</div>
+<!---->
+{%  endblock %}
+

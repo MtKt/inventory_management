@@ -57,8 +57,8 @@ class Bill(models.Model):
     create_time = models.DateTimeField('创建时间', auto_now_add=True)
     deliver_time = models.DateTimeField('交货时间', auto_now_add=False)
     bill_status = models.IntegerField('单证状态', default=0, choices=STATUS.items())
-    product_name = models.CharField('名称', max_length = 40)
-    quantity = models.IntegerField('数量')
+    product_name = models.CharField('货物名称', max_length = 40)
+    quantity = models.IntegerField('需求数量')
     #bill_id = models.CharField('账单ID',max_length = 40,unique=True)
 
     '''def save(self, *args, **kwargs):
@@ -70,3 +70,24 @@ class Bill(models.Model):
 
     def __str__(self):
         return self.company_name.name
+
+class Dispatch(models.Model):
+
+    STATUS = {
+        0:u'已审阅',
+        1:u'草稿'
+    }
+
+    sales_name = models.ForeignKey(Staff, verbose_name=u'销售人员', on_delete=models.CASCADE)
+    company_name = models.ForeignKey(Company, verbose_name=u'公司', on_delete=models.CASCADE)
+    create_time = models.DateTimeField('创建时间', auto_now_add=True)
+    dispatch_time = models.DateTimeField('发货时间', auto_now_add=False)
+    dispatch_status = models.IntegerField('单证状态', default=0, choices=STATUS.items())
+    product_name = models.CharField('货物名称', max_length = 40)
+    quantity = models.IntegerField('交货数量')
+
+    def get_absolute_url(self):
+        return reverse('i_m:dispatch', kwargs={'dispatch_id': self.id})
+
+    def __str__(self):
+        return self.create_time
