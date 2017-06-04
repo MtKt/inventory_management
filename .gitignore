@@ -6,3 +6,4 @@ i_m/migrations/*
 .idea
 .DS_Store
 media/*
+db.sqlite3
