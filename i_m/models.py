@@ -82,7 +82,7 @@ class Dispatch(models.Model):
         0:u'已审阅',
         1:u'草稿'
     }
-    sales_name = models.ForeignKey(Staff, verbose_name=u'销售人员', on_delete=models.CASCADE)
+    dispatch_name = models.ForeignKey(Staff, verbose_name=u'发货人员', on_delete=models.CASCADE,default=None)
     company_name = models.ForeignKey(Company, verbose_name=u'公司', on_delete=models.CASCADE)
     bill = models.OneToOneField(Bill, verbose_name=u'订单', on_delete=models.CASCADE)
     create_time = models.DateTimeField('创建时间', auto_now_add=True)
