@@ -22,19 +22,21 @@ def search(objs_list,Obj,request,context):
             d = request.GET['day_to']
             date_to = datetime.datetime(int(y), int(m), int(d), 0, 0)
             objs_list = Obj.objects.filter(create_time__range=(date_from, date_to)).order_by("-create_time")
+            context['objs_list'] = objs_list
             if not objs_list:
                 context['ERR'] = '╮(￣▽￣"")╭  并没有查到什么'
+                context['objs_list'] = ''
         except:
             context['ERR'] = '╮(￣▽￣"")╭  并没有查到什么'
-            objs_list = ''
-    return objs_list
+            context['objs_list'] = ''
+    return context
 
 
 def bills(request):
     bills_list = Bill.objects.filter(bill_status=0).order_by("-create_time")
     context=dict()
-   # search(bills_list,Bill,request,context)
-
+    context['bills_list'] = bills_list
+    #search(bills_list,Bill,request,context)
     if 'year_from' and 'month_from' and 'day_from' and\
             'year_to' and 'month_to' and 'day_to' in request.GET:
         try:
@@ -52,7 +54,6 @@ def bills(request):
         except:
             context['ERR'] = '╮(￣▽￣"")╭  并没有查到什么'
             bills_list = ''
-
     context['bills_list'] = bills_list
     return render(request,"i_m/bills.html",context)
 
