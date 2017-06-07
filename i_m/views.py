@@ -55,8 +55,8 @@ def bills(request):
             context['ERR'] = '╮(￣▽￣"")╭  并没有查到什么'
             bills_list = ''
         
-        if bills_serial in request:
-            pass
+        #if bills_serial in request:
+        #    pass
 
     context['bills_list'] = bills_list
     return render(request,"i_m/bills.html",context)
